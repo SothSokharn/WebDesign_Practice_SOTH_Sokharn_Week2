@@ -1,0 +1,27 @@
+   
+.container{
+    gap:5px;
+    display:flex;
+    flex-wrap: wrap;
+
+}
+div {
+    width: 200px;
+    height: 200px;
+}
+.div1{
+    background-color: blue;
+    padding: 50px;
+    border: 10px solid black;
+}
+.div2{
+    background-color: pink;
+    border-top: 20px solid black;
+    border-right:10px solid black;
+    border-bottom:20px solid black;
+    border-left:10px solid black;
+}
+.div3{
+    background-color: yellow;
+    border:10px
+}

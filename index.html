@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #ffffff;
+    --card-edge: #e9e6e0;
+    --ink:       #1a1a1a;
+    --muted:     #7a7670;
+    --gold:      #c9992e;
+    --magenta:   #e0357a;
+    --violet:    #6b4fd6;
+    --divider:   #ece9e3;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    min-height:100%;
+    background: var(--bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Inter', sans-serif;
+    padding: 40px 16px;
+  }
+
+  .card{
+    width: 320px;
+    background: #fff;
+    border: 1px solid var(--card-edge);
+    border-radius: 22px;
+    padding: 30px 28px 28px;
+    color: var(--ink);
+    box-shadow: 0 20px 40px -24px rgba(0,0,0,0.18);
+  }
+
+  .kicker{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .kicker .dot{
+    width: 6px; height:6px; border-radius:50%;
+    background: #2fb571;
+    display:inline-block;
+    margin-right: 6px;
+  }
+  .kicker .live{ display:flex; align-items:center; }
+
+  .portrait-wrap{
+    display:flex;
+    justify-content:center;
+    margin: 20px 0 16px;
+  }
+  .portrait{
+    position:relative;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    padding: 3px;
+    background: conic-gradient(from 210deg, var(--gold), var(--magenta), var(--violet), var(--gold));
+  }
+  .portrait img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border-radius:50%;
+    display:block;
+    background: #f1efe9;
+  }
+  .badge{
+    position:absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 24px; height:24px;
+    border-radius: 50%;
+    background: var(--violet);
+    border: 3px solid #fff;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .badge svg{ width:11px; height:11px; }
+
+  .identity{ text-align:center; }
+  .name{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 23px;
+    margin: 0 0 4px;
+  }
+  .role{
+    margin:0;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+
+  .bio{
+    margin: 16px 2px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+    text-align:center;
+  }
+
+  .stats{
+    display:flex;
+    justify-content: space-between;
+    padding: 14px 6px;
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 20px;
+  }
+  .stat{ text-align:center; flex:1; }
+  .stat + .stat{ border-left: 1px solid var(--divider); }
+  .stat .num{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 18px;
+    font-weight:600;
+  }
+  .stat .label{
+    display:block;
+    font-size: 10.5px;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .socials a{
+    width: 34px; height:34px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: #f7f5f1;
+    border: 1px solid var(--card-edge);
+    color: var(--muted);
+    text-decoration:none;
+    transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .socials a:hover,
+  .socials a:focus-visible{
+    color: var(--ink);
+    border-color: var(--magenta);
+    transform: translateY(-2px);
+  }
+  .socials svg{ width:16px; height:16px; }
+
+  .cta{
+    width:100%;
+    padding: 13px 0;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--magenta), var(--violet));
+    color: #fff;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size: 14px;
+    cursor:pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px -10px rgba(224,53,122,0.5);
+  }
+  .cta:active{ transform: translateY(0); }
+  .cta:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
+  .cta.following{
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .socials a, .cta{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="kicker">
+      <span>ALL ACCESS</span>
+      <span class="live"><span class="dot"></span>ON TOUR</span>
+    </div>
+
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <!-- Replace this src with a real photo URL or your own uploaded image -->
+        <img src="https://i.pinimg.com/236x/bf/f0/1d/bff01dd0ae186d938f1af8ba127f12bd.jpg" alt="Profile photo">
+      </div>
+      <div class="badge" aria-label="Verified">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12l4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="identity">
+      <p class="name">Monkey D luffy</p>
+      <p class="role">Pirate · One Piece</p>
+    </div>
+
+    <p class="bio">Add a short bio here. A line or two about who you are and what you do is plenty.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num">4</span>
+        <span class="label">ALBUMS</span>
+      </div>
+      <div class="stat">
+        <span class="num">38</span>
+        <span class="label">SHOWS</span>
+      </div>
+      <div class="stat">
+        <span class="num">2.1M</span>
+        <span class="label">FANS</span>
+      </div>
+    </div>
+
+    <div class="socials">
+      <a href="#" aria-label="Twitter / X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-6.9L4.8 22H1.7l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2Zm-1.2 18h1.9L7.4 4H5.4L17.7 20Z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+      <a href="#" aria-label="Spotify">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9.5"/><path d="M7 10c3.5-1 8-.6 10.5 1" stroke-linecap="round"/><path d="M7.5 13c2.8-.8 6.4-.4 8.5 1" stroke-linecap="round"/><path d="M8 16c2-.6 4.8-.3 6.5.8" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
+    <button class="cta" id="followBtn">Follow</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('followBtn');
+    let following = false;
+    btn.addEventListener('click', () => {
+      following = !following;
+      btn.textContent = following ? 'Following' : 'Follow';
+      btn.classList.toggle('following', following);
+    });
+  </script>
+
+</body>
+</html>
